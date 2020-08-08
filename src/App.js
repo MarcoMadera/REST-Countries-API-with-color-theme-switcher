@@ -3,13 +3,17 @@ import Header from "./components/Header";
 import Filter from "./components/Filter";
 import Countries from "./components/Countries";
 import Spinner from "./components/Spinner";
+import NotFound from "./components/NotFound";
 import "./App.css";
 
 const App = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [darkMode, setDarkMode] = useState(false);
-
+  const [isSearching, setIsSearching] = useState(false);
+  const toggleIsSearching = useCallback((value) => {
+    setIsSearching(value);
+  }, []);
   const switchDarkMode = useCallback(() => {
     setDarkMode(!darkMode);
   }, [darkMode]);
@@ -28,14 +32,27 @@ const App = () => {
   return (
     <>
       <Header darkMode={darkMode} switchDarkMode={switchDarkMode} />
-      <Filter filterDataByName={filterDataByName} data={data} />
+      <Filter
+        filterDataByName={filterDataByName}
+        data={data}
+        toggleIsSearching={toggleIsSearching}
+      />
       {data.length > 0 ? (
         <Countries
-          data={filteredData.length > 0 ? filteredData : data}
+          data={
+            filteredData.length > 0 && isSearching
+              ? filteredData
+              : isSearching === false
+                ? data
+                : []
+          }
           filteredData={filteredData}
         />
       ) : (
         <Spinner />
+      )}
+      {isSearching === true && filteredData.length ===0 && (
+        <NotFound />
       )}
     </>
   );

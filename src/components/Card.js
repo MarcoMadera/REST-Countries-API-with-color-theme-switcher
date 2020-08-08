@@ -3,6 +3,9 @@ import "./css/Card.css";
 import PropTypes from "prop-types";
 
 const Card = ({ image, name, population, region, capital }) => {
+  const formatNumber=(number) =>{
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   return (
     <div className="Card">
       <div className="Card__flag">
@@ -11,7 +14,7 @@ const Card = ({ image, name, population, region, capital }) => {
       <div className="Card__data">
         <h1 className="Card__data-name">{name}</h1>
         <p className="Card__data-population">
-          Population: <span>{population}</span>
+          Population: <span>{formatNumber(population)}</span>
         </p>
 
         <p className="Card__data-region">

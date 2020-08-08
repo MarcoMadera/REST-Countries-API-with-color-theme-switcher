@@ -3,16 +3,21 @@ import "./css/Filter.css";
 import Search from "./images/Search";
 import PropTypes from "prop-types";
 
-const Filter = ({ filterDataByName, data }) => {
-  const [search, setSearch] = useState();
-
+const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
+  const [search, setSearch] = useState("");
+  const [searchList, setListSearch] = useState();
+  console.log(searchList);
   const handleChange = useCallback((e) => {
     setSearch(e.target.value);
   }, []);
+  const handleListChange = useCallback((e) => {
+    setListSearch(e.target.value);
+  }, []);
 
   useEffect(() => {
-    if (data.length > 0 && (search || search === "")) {
+    if (searchList && data.length > 0 && searchList) {
       const results = [...data]
+        .filter((result) => result.region.includes(searchList))
         .map((data) => ({
           name: data.name,
           population: data.population,
@@ -23,9 +28,26 @@ const Filter = ({ filterDataByName, data }) => {
         .filter((data) =>
           data.name.toLowerCase().includes(search.toLowerCase())
         );
+      toggleIsSearching(true);
       filterDataByName(results);
+    } else {
+      if (data.length > 0 && (search || search === "")) {
+        const results = [...data]
+          .map((data) => ({
+            name: data.name,
+            population: data.population,
+            region: data.region,
+            capital: data.capital,
+            flag: data.flag,
+          }))
+          .filter((data) =>
+            data.name.toLowerCase().includes(search.toLowerCase())
+          );
+        toggleIsSearching(true);
+        filterDataByName(results);
+      }
     }
-  }, [search, filterDataByName, data]);
+  }, [search, filterDataByName, data, searchList, toggleIsSearching]);
 
   return (
     <div className="Filter">
@@ -42,7 +64,13 @@ const Filter = ({ filterDataByName, data }) => {
         />
       </div>
       <div className="CategoryFilter">
-        <select id="regions" defaultValue={"default"} name="regions">
+        {/* eslint-disable-next-line jsx-a11y/no-onchange */}
+        <select
+          id="regions"
+          defaultValue={"default"}
+          name="regions"
+          onChange={handleListChange}
+        >
           <option disabled value="default" hidden>
             Filter by Region
           </option>
@@ -59,6 +87,7 @@ const Filter = ({ filterDataByName, data }) => {
 
 Filter.propTypes = {
   filterDataByName: PropTypes.func,
+  toggleIsSearching: PropTypes.func,
   data: PropTypes.array,
 };
 

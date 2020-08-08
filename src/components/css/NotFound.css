@@ -1,0 +1,10 @@
+.NotFound h1 {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Nunito Sans;
+  font-weight: 700;
+  font-size: 24px;
+  color: rgb(17, 21, 23);
+}
