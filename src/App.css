@@ -4,8 +4,6 @@
   box-sizing: border-box;
 }
 
-body{
-  background-color: cadetblue;
-  color: #fff;
-  text-align: center;
+body {
+  background-color: rgb(250, 250, 250);
 }
