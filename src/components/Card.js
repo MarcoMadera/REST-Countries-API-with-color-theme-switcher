@@ -1,6 +1,7 @@
 import React from "react";
 import "./css/Card.css";
 import PropTypes from "prop-types";
+import {Link} from "react-router-dom";
 
 const Card = ({ image, name, population, region, capital }) => {
   const formatNumber=(number) =>{
@@ -12,7 +13,9 @@ const Card = ({ image, name, population, region, capital }) => {
         <img loading="lazy" src={image} alt={`${name} flag`} />
       </div>
       <div className="Card__data">
-        <h1 className="Card__data-name">{name}</h1>
+        <Link to={`/country/${name}`}>
+          <h1 className="Card__data-name">{name}</h1>
+        </Link>
         <p className="Card__data-population">
           Population: <span>{formatNumber(population)}</span>
         </p>

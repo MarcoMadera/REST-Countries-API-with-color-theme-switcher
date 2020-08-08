@@ -1,0 +1,35 @@
+.Country {
+  margin: 80px;
+}
+
+.Country__datas {
+  display: flex;
+  justify-content: space-between;
+}
+
+.Country__flag img {
+  max-width: 560px;
+  height: auto;
+}
+
+.Country__data {
+  font-family: Nunito Sans;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 32px;
+  color: rgb(17, 21, 23);
+}
+.Country__data span {
+  font-family: Nunito Sans;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 32px;
+  color: rgb(17, 21, 23);
+}
+
+.Country__data-name {
+  font-family: Nunito Sans;
+  font-weight: 700;
+  font-size: 32px;
+  color: rgb(17, 21, 23);
+}

@@ -1,26 +1,21 @@
-import React, { useEffect, useState, useCallback } from "react";
-import Header from "./components/Header";
-import Filter from "./components/Filter";
-import Countries from "./components/Countries";
-import Spinner from "./components/Spinner";
+import React, {useEffect, useState, useCallback } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 import "./App.css";
+import Home from "./pages/Home";
+import Country from "./pages/Country";
 
 const App = () => {
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
-  const [darkMode, setDarkMode] = useState(false);
-  const [isSearching, setIsSearching] = useState(false);
-  const toggleIsSearching = useCallback((value) => {
-    setIsSearching(value);
-  }, []);
+  const [data,setData] = useState([]);
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("dark-mode") ||
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
+
   const switchDarkMode = useCallback(() => {
     setDarkMode(!darkMode);
   }, [darkMode]);
-
-  const filterDataByName = useCallback((data) => {
-    setFilteredData(data);
-  }, []);
 
   useEffect(() => {
     fetch("https://restcountries.eu/rest/v2/all")
@@ -29,32 +24,17 @@ const App = () => {
         setData(res);
       });
   }, []);
+
   return (
-    <>
-      <Header darkMode={darkMode} switchDarkMode={switchDarkMode} />
-      <Filter
-        filterDataByName={filterDataByName}
-        data={data}
-        toggleIsSearching={toggleIsSearching}
-      />
-      {data.length > 0 ? (
-        <Countries
-          data={
-            filteredData.length > 0 && isSearching
-              ? filteredData
-              : isSearching === false
-                ? data
-                : []
-          }
-          filteredData={filteredData}
-        />
-      ) : (
-        <Spinner />
-      )}
-      {isSearching === true && filteredData.length ===0 && (
-        <NotFound />
-      )}
-    </>
+    <BrowserRouter>
+      <Layout darkMode={darkMode} switchDarkMode={switchDarkMode}>
+        <Switch>
+          <Route exact path="/" render={()=><Home data={data}/>} />
+          <Route exact path="/country/:name" render={(props)=><Country data={data} {...props}/>} />
+          <Route component={NotFound} />
+        </Switch>
+      </Layout>
+    </BrowserRouter>
   );
 };
 

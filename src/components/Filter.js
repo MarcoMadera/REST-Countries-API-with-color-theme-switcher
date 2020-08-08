@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
   const [search, setSearch] = useState("");
   const [searchList, setListSearch] = useState();
-  console.log(searchList);
   const handleChange = useCallback((e) => {
     setSearch(e.target.value);
   }, []);
