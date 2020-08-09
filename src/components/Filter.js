@@ -13,40 +13,48 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
     setListSearch(e.target.value);
   }, []);
 
-  useEffect(() => {
-    if (searchList && data.length > 0 && searchList) {
-      const results = [...data]
-        .filter((result) => result.region.includes(searchList))
+  const filterData = useCallback(
+    (data) => {
+      return data
         .map((data) => ({
           name: data.name,
           population: data.population,
           region: data.region,
           capital: data.capital,
           flag: data.flag,
+          alpha3Code: data.alpha3Code,
         }))
         .filter((data) =>
           data.name.toLowerCase().includes(search.toLowerCase())
         );
+    },
+    [search]
+  );
+
+  useEffect(() => {
+    if (searchList && data.length > 0 && searchList) {
+      const results = filterData(
+        [...data].filter((result) => result.region.includes(searchList))
+      );
       toggleIsSearching(true);
       filterDataByName(results);
     } else {
-      if (data.length > 0 && (search || search === "")) {
-        const results = [...data]
-          .map((data) => ({
-            name: data.name,
-            population: data.population,
-            region: data.region,
-            capital: data.capital,
-            flag: data.flag,
-          }))
-          .filter((data) =>
-            data.name.toLowerCase().includes(search.toLowerCase())
-          );
+      if (data.length > 0 && search) {
         toggleIsSearching(true);
-        filterDataByName(results);
+        filterDataByName(filterData([...data]));
       }
     }
-  }, [search, filterDataByName, data, searchList, toggleIsSearching]);
+    if (search === "" && !searchList) {
+      toggleIsSearching(false);
+    }
+  }, [
+    search,
+    filterDataByName,
+    data,
+    searchList,
+    toggleIsSearching,
+    filterData,
+  ]);
 
   return (
     <div className="Filter">
@@ -65,6 +73,7 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
       <div className="CategoryFilter">
         {/* eslint-disable-next-line jsx-a11y/no-onchange */}
         <select
+          aria-label="Filter by region"
           id="regions"
           defaultValue={"default"}
           name="regions"

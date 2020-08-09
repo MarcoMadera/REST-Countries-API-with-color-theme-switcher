@@ -4,8 +4,8 @@ import Card from "./Card";
 import PropTypes from "prop-types";
 const Countries = ({ data }) => {
   return (
-    <div className="Countries">
-      {data.map(({ name, flag, population, region, capital }) => (
+    <main className="Countries">
+      {data.map(({ name, flag, population, region, capital, alpha3Code }) => (
         <Card
           key={name}
           image={flag}
@@ -13,9 +13,10 @@ const Countries = ({ data }) => {
           population={population}
           region={region}
           capital={capital}
+          alpha3Code={alpha3Code}
         />
       ))}
-    </div>
+    </main>
   );
 };
 

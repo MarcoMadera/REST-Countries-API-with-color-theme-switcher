@@ -3,16 +3,16 @@ import "./css/Card.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
-const Card = ({ image, name, population, region, capital }) => {
+const Card = ({ image, name, population, region, capital, alpha3Code }) => {
   const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
-    <Link to={`/country/${name}`} className="Card">
-      <div className="Card__flag">
+    <Link to={`/${alpha3Code}`} className="Card">
+      <header className="Card__flag">
         <img loading="lazy" src={image} alt={`${name} flag`} />
-      </div>
-      <div className="Card__data">
+      </header>
+      <section className="Card__data">
         <h1 className="Card__data-name">{name}</h1>
         <p className="Card__data-population">
           Population: <span>{formatNumber(population)}</span>
@@ -25,7 +25,7 @@ const Card = ({ image, name, population, region, capital }) => {
         <p className="Card__data-capital">
           Capital: <span>{capital}</span>
         </p>
-      </div>
+      </section>
     </Link>
   );
 };
@@ -36,6 +36,7 @@ Card.propTypes = {
   population: PropTypes.number,
   region: PropTypes.string,
   capital: PropTypes.string,
+  alpha3Code: PropTypes.string,
 };
 
 export default Card;

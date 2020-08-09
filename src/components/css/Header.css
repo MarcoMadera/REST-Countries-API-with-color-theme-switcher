@@ -13,25 +13,29 @@
   font-weight: 700;
   font-size: 24px;
   color: var(--generalTextColor);
+  text-decoration: none;
 }
 
 .Header__darkMode {
   display: flex;
   align-items: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
 }
 .Header__darkMode svg {
+  margin: 10px;
   user-select: none;
 }
 
 .Header__darkMode-Title {
-  margin: 10px;
   font-family: Nunito Sans;
   font-weight: 600;
   font-size: 16px;
   color: var(--generalTextColor);
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 660px) {
   .Header {
     padding: 0 16px;
   }
@@ -44,5 +48,11 @@
   .Header__darkMode svg {
     width: 12px;
     height: 12px;
+  }
+}
+
+@media screen and (min-width: 660px) and (max-width: 1024px) {
+  .Header {
+    padding: 0 40px;
   }
 }

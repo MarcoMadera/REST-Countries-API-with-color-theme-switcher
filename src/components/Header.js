@@ -3,24 +3,26 @@ import "./css/Header.css";
 import Moon from "./images/Moon";
 import Sun from "./images/Sun";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 const Header = ({ darkMode, switchDarkMode }) => {
   return (
-    <div className="Header">
-      <h1 className="Header__Title">Where in the world?</h1>
-      <div className="Header__darkMode">
+    <header className="Header">
+      <Link to="/" className="Header__Title">
+        Where in the world?
+      </Link>
+      <button
+        onClick={() => switchDarkMode()}
+        className="Header__darkMode Header__darkMode-Title"
+        id="toggleDarkMode"
+      >
         {darkMode ? (
-          <Moon
-            onClick={() => switchDarkMode()}
-            width={20}
-            heigth={20}
-            fill="rgb(250, 250, 250)"
-          />
+          <Moon width={20} height={20} fill="rgb(250, 250, 250)" />
         ) : (
-          <Sun onClick={() => switchDarkMode()} width={20} heigth={20} />
+          <Sun width={20} height={20} />
         )}
-        <p className="Header__darkMode-Title">Dark Mode</p>
-      </div>
-    </div>
+        Dark Mode
+      </button>
+    </header>
   );
 };
 

@@ -13,8 +13,8 @@ const Home = ({ data }) => {
     setIsSearching(value);
   }, []);
 
-  const filterDataByName = useCallback((data) => {
-    setFilteredData(data);
+  const filterDataByName = useCallback((datos) => {
+    setFilteredData(datos);
   }, []);
 
   return (

@@ -5,14 +5,20 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 660px) {
   .Countries {
     justify-content: space-between;
     margin: 0 16px;
   }
 }
-@media screen and (min-width: 678px) and (max-width: 1024px) {
+@media screen and (max-width: 560px) {
   .Countries {
-    margin: 0 54px;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 660px) and (max-width: 1024px) {
+  .Countries {
+    justify-content: space-between;
+    margin: 0 40px;
   }
 }

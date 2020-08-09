@@ -5,19 +5,18 @@ import "./css/Country.css";
 import BackArrow from "../components/images/BackArrow";
 import { Link } from "react-router-dom";
 const Country = ({ data, match, history }) => {
-  const country = data.find((country) => country.name === match.params.name);
+  const country = data.find(
+    (country) => country.alpha3Code === match.params.alpha3Code
+  );
   const countryBordersNames = (border) => {
-    const datas = [...data]
-      .filter(({ alpha3Code }) => alpha3Code === border)
-      .map((data) => data.name);
-
+    const datas = [...data].filter(({ alpha3Code }) => alpha3Code === border);
     return (
       <Link
-        to={`/country/${datas[0]}`}
+        to={`/${datas[0].alpha3Code}`}
         key={border}
         className="Country__border"
       >
-        {datas[0]}
+        {datas[0].name}
       </Link>
     );
   };
@@ -25,7 +24,7 @@ const Country = ({ data, match, history }) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
-    <div className="Country">
+    <main className="Country">
       {country ? (
         <>
           <button
@@ -85,7 +84,7 @@ const Country = ({ data, match, history }) => {
       ) : (
         <NotFound />
       )}
-    </div>
+    </main>
   );
 };
 Country.propTypes = {

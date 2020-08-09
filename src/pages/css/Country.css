@@ -26,6 +26,14 @@
 .Country__backButton svg path {
   fill: var(--generalTextColor);
 }
+.Country__backButton:hover,
+.Country__backButton:focus {
+  box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.4);
+}
+.darkMode .Country__backButton:hover,
+.darkMode .Country__backButton:focus {
+  box-shadow: 0px 0px 7px 0px rgba(163, 163, 163, 0.4);
+}
 
 .Country__datas {
   display: grid;
@@ -39,13 +47,6 @@
 }
 
 .Country__data {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-template-rows: repeat(3, auto);
-  grid-template-areas:
-    "name name"
-    "data data"
-    "border border";
   font-family: Nunito Sans;
   font-weight: 600;
   font-size: 16px;
@@ -61,7 +62,6 @@
 }
 
 .Country__data-name {
-  grid-area: name;
   font-family: Nunito Sans;
   font-weight: 700;
   font-size: 32px;
@@ -70,7 +70,6 @@
 
 .Country__metaDatas {
   display: grid;
-  grid-area: data;
   grid-auto-flow: column;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(5, auto);
@@ -93,6 +92,14 @@
   background-color: var(--navbarBackground);
   border-radius: 2px;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
+}
+.Country__border:hover,
+.Country__border:focus {
+  box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.3);
+}
+.darkMode .Country__border:hover,
+.darkMode .Country__border:focus {
+  box-shadow: 0px 0px 4px 1px rgba(163, 163, 163, 0.3);
 }
 
 @media screen and (max-width: 678px) {
@@ -122,9 +129,9 @@
     height: 180px;
   }
 }
-@media screen and (min-width: 678px) and (max-width: 1024px) {
+@media screen and (min-width: 660px) and (max-width: 1024px) {
   .Country {
-    margin: 40px 28px;
+    margin: 40px;
   }
   .Country__flag img {
     width: 350px;
