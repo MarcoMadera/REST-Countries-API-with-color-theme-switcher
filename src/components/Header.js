@@ -9,7 +9,12 @@ const Header = ({ darkMode, switchDarkMode }) => {
       <h1 className="Header__Title">Where in the world?</h1>
       <div className="Header__darkMode">
         {darkMode ? (
-          <Moon onClick={() => switchDarkMode()} width={20} heigth={20} />
+          <Moon
+            onClick={() => switchDarkMode()}
+            width={20}
+            heigth={20}
+            fill="rgb(250, 250, 250)"
+          />
         ) : (
           <Sun onClick={() => switchDarkMode()} width={20} heigth={20} />
         )}

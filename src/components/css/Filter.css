@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   padding: 0 0 0 2rem;
-  background-color: rgb(255, 255, 255);
+  background-color: var(--navbarBackground);
   width: 480px;
   box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.05);
   border-radius: 5px;
@@ -20,7 +20,7 @@
 }
 
 .SearchFilter svg path {
-  fill: rgb(132, 132, 132);
+  fill: var(--searchBarTextColor);
 }
 
 .SearchFilter__input {
@@ -29,6 +29,8 @@
   outline: none;
   border: none;
   padding-left: 24px;
+  background-color: var(--navbarBackground);
+  color: var(--searchBarTextColor);
 }
 
 .SearchFilter__input::placeholder {
@@ -36,17 +38,21 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: rgb(132, 132, 132);
+  color: var(--searchBarTextColor);
 }
 
 /* Filter by Regions */
 .CategoryFilter select {
   padding: 18px 24px;
   box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+  background-color: var(--navbarBackground);
+  color: var(--searchBarTextColor);
+  border: none;
+  border-radius: 5px;
 }
 .CategoryFilter select option,
 .CategoryFilter select {
-  color: rgb(17, 21, 23);
+  color: var(--generalTextColor);
   line-height: 20px;
   font-size: 14px;
   font-weight: 400;

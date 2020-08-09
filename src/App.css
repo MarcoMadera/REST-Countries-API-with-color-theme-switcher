@@ -1,9 +1,26 @@
+:root {
+  --navbarBackground: rgb(255, 255, 255);
+  --background: rgb(250, 250, 250);
+  --generalTextColor: rgb(17, 21, 23);
+  --searchBarTextColor: rgb(132, 132, 132);
+}
+
+.darkMode {
+  --navbarBackground: rgb(43, 56, 68);
+  --background: rgb(32, 44, 54);
+  --generalTextColor: rgb(255, 255, 255);
+  --searchBarTextColor: rgb(255, 255, 255);
+}
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+html {
+  overflow-y: overlay;
+}
 
 body {
-  background-color: rgb(250, 250, 250);
+  background-color: var(--background);
 }

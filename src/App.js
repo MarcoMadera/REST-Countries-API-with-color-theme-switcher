@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useCallback } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
@@ -7,14 +7,21 @@ import Home from "./pages/Home";
 import Country from "./pages/Country";
 
 const App = () => {
-  const [data,setData] = useState([]);
+  const [data, setData] = useState([]);
   const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("dark-mode") ||
-      window.matchMedia("(prefers-color-scheme: dark)").matches
+    window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
   const switchDarkMode = useCallback(() => {
     setDarkMode(!darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("darkMode");
+    } else {
+      document.body.classList.remove("darkMode");
+    }
   }, [darkMode]);
 
   useEffect(() => {
@@ -29,8 +36,12 @@ const App = () => {
     <BrowserRouter>
       <Layout darkMode={darkMode} switchDarkMode={switchDarkMode}>
         <Switch>
-          <Route exact path="/" render={()=><Home data={data}/>} />
-          <Route exact path="/country/:name" render={(props)=><Country data={data} {...props}/>} />
+          <Route exact path="/" render={() => <Home data={data} />} />
+          <Route
+            exact
+            path="/country/:name"
+            render={(props) => <Country data={data} {...props} />}
+          />
           <Route component={NotFound} />
         </Switch>
       </Layout>

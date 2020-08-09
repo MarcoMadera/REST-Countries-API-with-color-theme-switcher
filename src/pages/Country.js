@@ -12,7 +12,11 @@ const Country = ({ data, match, history }) => {
       .map((data) => data.name);
 
     return (
-      <Link to={`/country/${datas[0]}`} key={border}>
+      <Link
+        to={`/country/${datas[0]}`}
+        key={border}
+        className="Country__border"
+      >
         {datas[0]}
       </Link>
     );
@@ -28,7 +32,7 @@ const Country = ({ data, match, history }) => {
             onClick={() => history.goBack()}
             className="Country__backButton"
           >
-            <BackArrow /> Back
+            <BackArrow width={14} height={14} /> Back
           </button>
           <div className="Country__datas">
             <div className="Country__flag">
@@ -55,26 +59,26 @@ const Country = ({ data, match, history }) => {
                 <p className="Country__data-capital">
                   Top Level Domain:{" "}
                   {country.topLevelDomain.map((domain) => (
-                    <span key={domain}>{domain}</span>
+                    <span key={domain}>{domain} </span>
                   ))}
                 </p>
                 <p className="Country__data-capital">
                   Currencies:{" "}
                   {country.currencies.map(({ name }) => (
-                    <span key={name}>{name}</span>
+                    <span key={name}>{name} </span>
                   ))}
                 </p>
                 <p className="Country__data-capital">
                   Languages:{" "}
                   {country.languages.map(({ name }) => (
-                    <span key={name}>{name}</span>
+                    <span key={name}>{name} </span>
                   ))}
                 </p>
               </div>
-              <p className="Country__data-capital">
-                Border Countries:{" "}
+              <div className="Country__borders">
+                <p>Border Countries: </p>
                 {country.borders.map((border) => countryBordersNames(border))}
-              </p>
+              </div>
             </div>
           </div>
         </>

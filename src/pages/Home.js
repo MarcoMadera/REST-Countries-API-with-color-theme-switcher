@@ -6,7 +6,7 @@ import NotFound from "../components/NotFound";
 import "./css/Home.css";
 import PropTypes from "prop-types";
 
-const Home = ({data}) => {
+const Home = ({ data }) => {
   const [filteredData, setFilteredData] = useState([]);
   const [isSearching, setIsSearching] = useState(false);
   const toggleIsSearching = useCallback((value) => {
@@ -17,7 +17,6 @@ const Home = ({data}) => {
     setFilteredData(data);
   }, []);
 
-  
   return (
     <>
       <Filter
@@ -39,15 +38,13 @@ const Home = ({data}) => {
       ) : (
         <Spinner />
       )}
-      {isSearching === true && filteredData.length ===0 && (
-        <NotFound />
-      )}
+      {isSearching === true && filteredData.length === 0 && <NotFound />}
     </>
   );
 };
 
 Home.propTypes = {
-  data: PropTypes.array
+  data: PropTypes.array,
 };
 
 export default Home;

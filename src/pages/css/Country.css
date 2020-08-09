@@ -2,34 +2,95 @@
   margin: 80px;
 }
 
-.Country__datas {
+.Country__backButton {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  width: 136px;
+  height: 40px;
+  border-radius: 6px;
+  color: var(--generalTextColor);
+  background-color: var(--navbarBackground);
+  border: none;
+  box-shadow: 0px 0px 7px 0px rgba(0, 0, 0, 0.29);
+  cursor: pointer;
+  margin-bottom: 80px;
+  font-family: Nunito Sans;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 20px;
+}
+.Country__backButton svg {
+  margin-right: 10px;
+}
+.Country__backButton svg path {
+  fill: var(--generalTextColor);
+}
+
+.Country__datas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .Country__flag img {
-  max-width: 560px;
-  height: auto;
+  width: 560px;
+  height: 400px;
+  object-fit: cover;
 }
 
 .Country__data {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(3, auto);
+  grid-template-areas:
+    "name name"
+    "data data"
+    "border border";
   font-family: Nunito Sans;
   font-weight: 600;
   font-size: 16px;
   line-height: 32px;
-  color: rgb(17, 21, 23);
+  color: var(--generalTextColor);
 }
 .Country__data span {
   font-family: Nunito Sans;
   font-weight: 300;
   font-size: 16px;
   line-height: 32px;
-  color: rgb(17, 21, 23);
+  color: var(--generalTextColor);
 }
 
 .Country__data-name {
+  grid-area: name;
   font-family: Nunito Sans;
   font-weight: 700;
   font-size: 32px;
-  color: rgb(17, 21, 23);
+  color: var(--generalTextColor);
+}
+
+.Country__metaDatas {
+  display: grid;
+  grid-area: data;
+  grid-auto-flow: column;
+  grid-template-columns: repeat(2, auto);
+  grid-template-rows: repeat(5, auto);
+}
+
+.Country__borders p {
+  margin-right: 10px;
+  display: inline;
+}
+
+.Country__border {
+  display: inline-block;
+  font-family: Nunito Sans;
+  font-weight: 300;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--generalTextColor);
+  margin: 10px 10px 10px 0;
+  padding: 5px 20px;
+  background-color: var(--navbarBackground);
+  border-radius: 2px;
+  box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
 }

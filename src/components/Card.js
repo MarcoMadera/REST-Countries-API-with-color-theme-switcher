@@ -1,21 +1,19 @@
 import React from "react";
 import "./css/Card.css";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Card = ({ image, name, population, region, capital }) => {
-  const formatNumber=(number) =>{
+  const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
-    <div className="Card">
+    <Link to={`/country/${name}`} className="Card">
       <div className="Card__flag">
         <img loading="lazy" src={image} alt={`${name} flag`} />
       </div>
       <div className="Card__data">
-        <Link to={`/country/${name}`}>
-          <h1 className="Card__data-name">{name}</h1>
-        </Link>
+        <h1 className="Card__data-name">{name}</h1>
         <p className="Card__data-population">
           Population: <span>{formatNumber(population)}</span>
         </p>
@@ -28,7 +26,7 @@ const Card = ({ image, name, population, region, capital }) => {
           Capital: <span>{capital}</span>
         </p>
       </div>
-    </div>
+    </Link>
   );
 };
 

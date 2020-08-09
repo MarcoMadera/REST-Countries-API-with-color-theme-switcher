@@ -1,5 +1,5 @@
 .Header {
-  background-color: rgb(255, 255, 255);
+  background-color: var(--navbarBackground);
   height: 80px;
   width: 100%;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.06);
@@ -12,7 +12,7 @@
   font-family: Nunito Sans;
   font-weight: 700;
   font-size: 24px;
-  color: rgb(17, 21, 23);
+  color: var(--generalTextColor);
 }
 
 .Header__darkMode {
@@ -27,5 +27,5 @@
   font-family: Nunito Sans;
   font-weight: 600;
   font-size: 16px;
-  color: rgb(17, 21, 23);
+  color: var(--generalTextColor);
 }
