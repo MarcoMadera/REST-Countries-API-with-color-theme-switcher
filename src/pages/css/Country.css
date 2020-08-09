@@ -94,3 +94,40 @@
   border-radius: 2px;
   box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.1);
 }
+
+@media screen and (max-width: 678px) {
+  .Country {
+    margin: 40px 28px;
+  }
+  .Country__datas {
+    display: block;
+  }
+  .Country__flag img {
+    width: 100%;
+    height: 250px;
+  }
+  .Country__backButton {
+    margin-bottom: 64px;
+  }
+  .Country__metaDatas {
+    display: block;
+  }
+  .Country__borders p {
+    display: block;
+  }
+}
+@media screen and (max-width: 400px) {
+  .Country__flag img {
+    width: 100%;
+    height: 180px;
+  }
+}
+@media screen and (min-width: 678px) and (max-width: 1024px) {
+  .Country {
+    margin: 40px 28px;
+  }
+  .Country__flag img {
+    width: 350px;
+    height: 280px;
+  }
+}

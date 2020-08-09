@@ -1,6 +1,18 @@
 .Countries {
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(auto-fit, 264px);
   margin: 0 80px;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 678px) {
+  .Countries {
+    justify-content: space-between;
+    margin: 0 16px;
+  }
+}
+@media screen and (min-width: 678px) and (max-width: 1024px) {
+  .Countries {
+    margin: 0 54px;
+  }
 }

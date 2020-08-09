@@ -17,6 +17,7 @@
 
 .Header__darkMode {
   display: flex;
+  align-items: center;
 }
 .Header__darkMode svg {
   user-select: none;
@@ -28,4 +29,20 @@
   font-weight: 600;
   font-size: 16px;
   color: var(--generalTextColor);
+}
+
+@media screen and (max-width: 678px) {
+  .Header {
+    padding: 0 16px;
+  }
+  .Header__Title {
+    font-size: 14px;
+  }
+  .Header__darkMode-Title {
+    font-size: 12px;
+  }
+  .Header__darkMode svg {
+    width: 12px;
+    height: 12px;
+  }
 }
