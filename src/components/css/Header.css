@@ -10,7 +10,7 @@
 }
 .Header__Title {
   font-family: Nunito Sans;
-  font-weight: 800;
+  font-weight: 700;
   font-size: 24px;
   color: var(--generalTextColor);
   text-decoration: none;
@@ -30,7 +30,7 @@
 
 .Header__darkMode-Title {
   font-family: Nunito Sans;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 16px;
   color: var(--generalTextColor);
   letter-spacing: 0;

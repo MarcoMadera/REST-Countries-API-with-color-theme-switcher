@@ -42,7 +42,7 @@
   background-color: var(--navbarBackground);
   color: var(--searchBarTextColor);
   letter-spacing: 0;
-  font-weight: 600;
+  font-weight: 400;
   font-family: Nunito Sans;
   font-size: 14px;
 }
@@ -53,7 +53,7 @@
 
 .SearchFilter__input::placeholder {
   font-family: Nunito Sans;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 14px;
   color: var(--searchBarTextColor);
   letter-spacing: 0;
@@ -82,7 +82,7 @@
   line-height: 20px;
   font-size: 14px;
   letter-spacing: 0;
-  font-weight: 600;
+  font-weight: 400;
   font-family: Nunito Sans;
   cursor: pointer;
   border: none;
@@ -113,7 +113,7 @@
   display: inline-block;
   align-content: center;
   font-family: Nunito Sans;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   color: var(--generalTextColor);
