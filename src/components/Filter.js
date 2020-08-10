@@ -92,7 +92,10 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
           onKeyDown={(e) => {
             e.shiftKey && e.keyCode === 9 && setIsDropDownOpen(false);
           }}
-          onClick={() => setIsDropDownOpen(!isDropDownOpen)}
+          onClick={(e) => {
+            setIsDropDownOpen(!isDropDownOpen);
+            e.stopPropagation();
+          }}
         >
           {searchList || "Filter by Region"}
           <Expand width={12} height={12} />

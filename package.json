@@ -10,8 +10,8 @@
   "author": "Marco Madera <marcomaderaa@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
+    "react": "^17.0.0-rc.0",
+    "react-dom": "^17.0.0-rc.0",
     "react-router-dom": "^5.2.0"
   },
   "scripts": {
