@@ -2,16 +2,32 @@ import React, { useState, useEffect, useCallback } from "react";
 import "./css/Filter.css";
 import Search from "./images/Search";
 import PropTypes from "prop-types";
+import Expand from "./images/Expand";
 
 const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
   const [search, setSearch] = useState("");
   const [searchList, setListSearch] = useState();
+  const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const handleChange = useCallback((e) => {
     setSearch(e.target.value);
   }, []);
-  const handleListChange = useCallback((e) => {
-    setListSearch(e.target.value);
-  }, []);
+  const handleListChange = useCallback(
+    (e) => {
+      setIsDropDownOpen(false);
+      if (e === searchList) {
+        setListSearch("");
+      } else {
+        setListSearch(e);
+      }
+    },
+    [searchList]
+  );
+
+  useEffect(() => {
+    if (isDropDownOpen) {
+      document.body.addEventListener("click", () => setIsDropDownOpen(false));
+    }
+  }, [isDropDownOpen]);
 
   const filterData = useCallback(
     (data) => {
@@ -70,24 +86,32 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
           placeholder="Search for a country..."
         />
       </div>
-      <div className="CategoryFilter">
-        {/* eslint-disable-next-line jsx-a11y/no-onchange */}
-        <select
-          aria-label="Filter by region"
-          id="regions"
-          defaultValue={"default"}
-          name="regions"
-          onChange={handleListChange}
+      <div className="CategoryFilterRegion">
+        <button
+          className="CategoryFilter"
+          onKeyDown={(e) => {
+            e.shiftKey && e.keyCode === 9 && setIsDropDownOpen(false);
+          }}
+          onClick={() => setIsDropDownOpen(!isDropDownOpen)}
         >
-          <option disabled value="default" hidden>
-            Filter by Region
-          </option>
-          <option value="Africa">Africa</option>
-          <option value="America">America</option>
-          <option value="Asia">Asia</option>
-          <option value="Europe">Europe</option>
-          <option value="Oceania">Oceania</option>
-        </select>
+          {searchList || "Filter by Region"}
+          <Expand width={12} height={12} />
+        </button>
+        <div
+          className="CategoryFilter__dropDown"
+          style={{ display: isDropDownOpen ? "block" : "none" }}
+        >
+          <button onClick={() => handleListChange("Africa")}>Africa</button>
+          <button onClick={() => handleListChange("America")}>America</button>
+          <button onClick={() => handleListChange("Asia")}>Asia</button>
+          <button onClick={() => handleListChange("Europe")}>Europe</button>
+          <button
+            onClick={() => handleListChange("Oceania")}
+            onKeyDown={(e) => e.keyCode === 9 && setIsDropDownOpen(false)}
+          >
+            Oceania
+          </button>
+        </div>
       </div>
     </div>
   );

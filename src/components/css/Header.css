@@ -33,6 +33,7 @@
   font-weight: 600;
   font-size: 16px;
   color: var(--generalTextColor);
+  letter-spacing: 0;
 }
 
 @media screen and (max-width: 660px) {

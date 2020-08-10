@@ -31,7 +31,7 @@ const Country = ({ data, match, history }) => {
             onClick={() => history.goBack()}
             className="Country__backButton"
           >
-            <BackArrow width={14} height={14} /> Back
+            <BackArrow width={15} height={15} /> Back
           </button>
           <div className="Country__datas">
             <div className="Country__flag">

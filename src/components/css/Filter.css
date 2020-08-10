@@ -41,6 +41,7 @@
   padding-left: 74px;
   background-color: var(--navbarBackground);
   color: var(--searchBarTextColor);
+  letter-spacing: 0;
 }
 
 .SearchFilter__input::placeholder {
@@ -49,34 +50,70 @@
   font-size: 14px;
   line-height: 20px;
   color: var(--searchBarTextColor);
+  letter-spacing: 0;
 }
 
 /* Filter by Regions */
-.CategoryFilter select {
-  width: 200px;
-  padding: 18px 24px;
-  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
-  background-color: var(--navbarBackground);
-  color: var(--searchBarTextColor);
-  border: none;
-  border-radius: 5px;
-}
-.CategoryFilter select:hover,
-.CategoryFilter select:focus {
+.CategoryFilterRegion:hover,
+.CategoryFilterRegion:focus {
   box-shadow: 0px 2px 11px 0px rgba(0, 0, 0, 0.07);
 }
-.darkMode .CategoryFilter select:hover,
-.darkMode .CategoryFilter select:focus {
+.darkMode .CategoryFilterRegion:hover,
+.darkMode .CategoryFilterRegion:focus {
   box-shadow: 0px 2px 9px 0px rgba(163, 163, 163, 0.07);
 }
-.CategoryFilter select option,
-.CategoryFilter select {
+
+.CategoryFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
+  padding: 18px 18px 18px 24px;
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+  background-color: var(--navbarBackground);
   color: var(--generalTextColor);
   line-height: 20px;
   font-size: 14px;
+  letter-spacing: 0;
   font-weight: 400;
   font-family: Nunito Sans;
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+.CategoryFilterRegion {
+  position: relative;
+}
+.CategoryFilter svg path {
+  fill: var(--chevron);
+}
+.CategoryFilter__dropDown {
+  position: absolute;
+  top: calc(100% + 4px);
+  width: 200px;
+  height: 164px;
+  border-radius: 5px;
+  background-color: var(--navbarBackground);
+  box-shadow: 0px 2px 9px 0px rgba(0, 0, 0, 0.05);
+  padding: 12px 0;
+}
+.CategoryFilter__dropDown button {
+  background-color: transparent;
+  width: 100%;
+  padding: 4px 24px;
+  border: none;
+  display: inline-block;
+  align-content: center;
+  font-family: Nunito Sans;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--generalTextColor);
+  cursor: pointer;
+  text-align: start;
+}
+.CategoryFilter__dropDown button:hover {
+  color: var(--regionFilterColor);
 }
 
 @media screen and (max-width: 660px) {
