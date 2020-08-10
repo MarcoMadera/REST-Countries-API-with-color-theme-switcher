@@ -35,22 +35,29 @@
 }
 
 .SearchFilter__input {
-  height: 56px;
+  height: 54px;
   width: 100%;
   border: none;
   padding-left: 74px;
   background-color: var(--navbarBackground);
   color: var(--searchBarTextColor);
   letter-spacing: 0;
+  font-weight: 600;
+  font-family: Nunito Sans;
+  font-size: 14px;
+}
+
+.SearchFilter__input:focus {
+  height: 100%;
 }
 
 .SearchFilter__input::placeholder {
   font-family: Nunito Sans;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
-  line-height: 20px;
   color: var(--searchBarTextColor);
   letter-spacing: 0;
+  opacity: 1;
 }
 
 /* Filter by Regions */
@@ -75,7 +82,7 @@
   line-height: 20px;
   font-size: 14px;
   letter-spacing: 0;
-  font-weight: 400;
+  font-weight: 600;
   font-family: Nunito Sans;
   cursor: pointer;
   border: none;
@@ -83,6 +90,7 @@
 }
 .CategoryFilterRegion {
   position: relative;
+  width: fit-content;
 }
 .CategoryFilter svg path {
   fill: var(--chevron);
@@ -105,7 +113,7 @@
   display: inline-block;
   align-content: center;
   font-family: Nunito Sans;
-  font-weight: 400;
+  font-weight: 600;
   font-size: 14px;
   line-height: 20px;
   color: var(--generalTextColor);
