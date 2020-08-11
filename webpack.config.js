@@ -47,14 +47,15 @@ module.exports = {
       template: "./public/index.html",
       filename: "./index.html",
     }),
+    new HtmlWebPackPlugin({
+      template: "./public/404.html",
+      filename: "./404.html",
+    }),
     new MiniCssExtractPlugin({
       filename: "assets/[name].css",
     }),
     new CopyWebpackPlugin({
-      patterns: [
-        { from: "src/images", to: "images" },
-        { from: "src/404", to: "/" },
-      ],
+      patterns: [{ from: "src/images", to: "images" }],
     }),
   ],
 };
