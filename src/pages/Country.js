@@ -40,43 +40,55 @@ const Country = ({ data, match, history }) => {
             <div className="Country__data">
               <h1 className="Country__data-name">{country.name}</h1>
               <div className="Country__metaDatas">
-                <p className="Country__data-nativeName">
+                <p>
                   Native Name: <span>{country.nativeName}</span>
                 </p>
-                <p className="Country__data-population">
+                <p>
                   Population: <span>{formatNumber(country.population)}</span>
                 </p>
-                <p className="Country__data-region">
+                <p>
                   Region: <span>{country.region}</span>
                 </p>
-                <p className="Country__data-subregion">
+                <p>
                   Sub Region: <span>{country.subregion}</span>
                 </p>
-                <p className="Country__data-capital">
+                <p>
                   Capital: <span>{country.capital}</span>
                 </p>
-                <p className="Country__data-capital">
+                <p>
                   Top Level Domain:{" "}
                   {country.topLevelDomain.map((domain) => (
                     <span key={domain}>{domain} </span>
                   ))}
                 </p>
-                <p className="Country__data-capital">
+                <p>
                   Currencies:{" "}
-                  {country.currencies.map(({ name }) => (
-                    <span key={name}>{name} </span>
-                  ))}
+                  {country.currencies.map(({ name }, i) =>
+                    country.currencies.length === i + 1 ? (
+                      <span key={name}>{name}</span>
+                    ) : (
+                      <span key={name}>{name}, </span>
+                    )
+                  )}
                 </p>
-                <p className="Country__data-capital">
+                <p>
                   Languages:{" "}
-                  {country.languages.map(({ name }) => (
-                    <span key={name}>{name} </span>
-                  ))}
+                  {country.languages.map(({ name }, i) =>
+                    country.languages.length === i + 1 ? (
+                      <span key={name}>{name}</span>
+                    ) : (
+                      <span key={name}>{name}, </span>
+                    )
+                  )}
                 </p>
               </div>
               <div className="Country__borders">
                 <p>Border Countries: </p>
-                {country.borders.map((border) => countryBordersNames(border))}
+                {country.borders.length ? (
+                  country.borders.map((border) => countryBordersNames(border))
+                ) : (
+                  <span>None</span>
+                )}
               </div>
             </div>
           </div>

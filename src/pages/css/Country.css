@@ -68,6 +68,7 @@
   font-weight: 700;
   font-size: 32px;
   color: var(--generalTextColor);
+  margin-bottom: 24px;
 }
 
 .Country__metaDatas {
@@ -75,6 +76,7 @@
   grid-auto-flow: column;
   grid-template-columns: repeat(2, auto);
   grid-template-rows: repeat(5, auto);
+  margin-bottom: 60px;
 }
 
 .Country__borders p {
@@ -117,6 +119,13 @@
   .Country__flag img {
     width: 320px;
     height: 250px;
+  }
+  .Country__data-name {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+  .Country__metaDatas p:nth-of-type(5) {
+    margin-bottom: 32px;
   }
   .Country__backButton {
     margin-bottom: 64px;
