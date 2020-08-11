@@ -26,6 +26,10 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
   useEffect(() => {
     if (isDropDownOpen) {
       document.body.addEventListener("click", () => setIsDropDownOpen(false));
+    } else {
+      document.body.removeEventListener("click", () =>
+        setIsDropDownOpen(false)
+      );
     }
   }, [isDropDownOpen]);
 

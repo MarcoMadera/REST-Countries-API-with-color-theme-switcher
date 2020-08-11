@@ -37,7 +37,7 @@
 
 .Country__datas {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: auto 1fr;
 }
 
 .Country__flag img {
@@ -52,6 +52,8 @@
   font-size: 16px;
   line-height: 32px;
   color: var(--generalTextColor);
+  padding-left: 120px;
+  align-self: center;
 }
 .Country__data span {
   font-family: Nunito Sans;
@@ -102,15 +104,18 @@
   box-shadow: 0px 0px 4px 1px rgba(163, 163, 163, 0.3);
 }
 
-@media screen and (max-width: 678px) {
+@media screen and (max-width: 768px) {
   .Country {
     margin: 40px 28px;
+  }
+  .Country__data {
+    padding-left: 0px;
   }
   .Country__datas {
     display: block;
   }
   .Country__flag img {
-    width: 100%;
+    width: 320px;
     height: 250px;
   }
   .Country__backButton {
@@ -125,16 +130,19 @@
 }
 @media screen and (max-width: 400px) {
   .Country__flag img {
-    width: 100%;
-    height: 180px;
+    width: 320px;
+    height: 250px;
   }
 }
-@media screen and (min-width: 660px) and (max-width: 1024px) {
+@media screen and (min-width: 768px) and (max-width: 1224px) {
   .Country {
     margin: 40px;
   }
   .Country__flag img {
-    width: 350px;
+    width: 360px;
     height: 280px;
+  }
+  .Country__data {
+    padding-left: 60px;
   }
 }

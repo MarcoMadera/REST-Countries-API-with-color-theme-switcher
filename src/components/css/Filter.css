@@ -47,10 +47,6 @@
   font-size: 14px;
 }
 
-.SearchFilter__input:focus {
-  height: 100%;
-}
-
 .SearchFilter__input::placeholder {
   font-family: Nunito Sans;
   font-weight: 400;
@@ -127,7 +123,8 @@
 @media screen and (max-width: 660px) {
   .Filter {
     display: block;
-    margin: 48px 16px;
+    margin-left: 16px;
+    margin-right: 16px;
   }
   .SearchFilter {
     width: 100%;
