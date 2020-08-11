@@ -12,7 +12,7 @@ const Country = ({ data, match, history }) => {
     const datas = [...data].filter(({ alpha3Code }) => alpha3Code === border);
     return (
       <Link
-        to={`/${datas[0].alpha3Code}`}
+        to={`/details/${datas[0].alpha3Code}`}
         key={border}
         className="Country__border"
       >

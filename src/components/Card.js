@@ -8,7 +8,7 @@ const Card = ({ image, name, population, region, capital, alpha3Code }) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
-    <Link to={`/${alpha3Code}`} className="Card">
+    <Link to={`/details/${alpha3Code}`} className="Card">
       <header className="Card__flag">
         <img loading="lazy" src={image} alt={`${name} flag`} />
       </header>

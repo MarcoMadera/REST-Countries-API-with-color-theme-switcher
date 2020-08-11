@@ -39,7 +39,7 @@ const App = () => {
           <Route exact path="/" render={() => <Home data={data} />} />
           <Route
             exact
-            path="/:alpha3Code"
+            path="/details/:alpha3Code"
             render={(props) => <Country data={data} {...props} />}
           />
           <Route component={NotFound} />
