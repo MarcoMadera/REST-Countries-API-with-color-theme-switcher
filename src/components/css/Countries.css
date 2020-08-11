@@ -1,13 +1,15 @@
 .Countries {
   display: grid;
   grid-template-columns: repeat(auto-fit, 264px);
+  column-gap: 30px;
+  row-gap: 75px;
   margin: 0 80px;
   justify-content: space-between;
 }
 
 @media screen and (max-width: 660px) {
   .Countries {
-    justify-content: space-between;
+    justify-content: center;
     margin: 0 16px;
   }
 }
