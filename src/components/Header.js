@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useCallback, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import "./css/Header.css";
 import Moon from "./images/Moon";
 import Sun from "./images/Sun";
-const Header = ({ darkMode, toggleDarkMode }) => {
+const Header = () => {
+  const [darkMode, setDarkMode] = useState(
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
+
+  const toggleDarkMode = useCallback(() => {
+    setDarkMode(!darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add("darkMode");
+    } else {
+      document.body.classList.remove("darkMode");
+    }
+  }, [darkMode]);
+
   return (
     <header className="Header">
       <Link to="/" className="Header__Title">
