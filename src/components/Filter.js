@@ -8,9 +8,11 @@ const Filter = ({ newFilteredData, data, changeIsFiltering }) => {
   const [inputFilter, setInputFilter] = useState("");
   const [regionFilter, setRegionFilter] = useState();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
+
   const handleChange = useCallback((e) => {
     setInputFilter(e.target.value);
   }, []);
+
   const handleRegionChange = useCallback(
     (region) => {
       setIsDropDownOpen(false);

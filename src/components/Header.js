@@ -1,6 +1,5 @@
 import React, { useCallback, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import "./css/Header.css";
 import Moon from "./images/Moon";
 import Sun from "./images/Sun";
@@ -39,11 +38,6 @@ const Header = () => {
       </button>
     </header>
   );
-};
-
-Header.propTypes = {
-  darkMode: PropTypes.bool,
-  toggleDarkMode: PropTypes.func,
 };
 
 export default Header;

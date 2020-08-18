@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import "./css/Details.css";
 import NotFound from "../components/NotFound";
 import BackArrow from "../components/images/BackArrow";
+
 const Details = ({ data, match, history }) => {
   const country = data.find(
     (country) => country.alpha3Code === match.params.alpha3Code

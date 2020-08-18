@@ -17,11 +17,9 @@ const Card = ({ flag, name, population, region, capital, alpha3Code }) => {
         <p className="Card__data-population">
           Population: <span>{formatNumber(population)}</span>
         </p>
-
         <p className="Card__data-region">
           Region: <span>{region}</span>
         </p>
-
         <p className="Card__data-capital">
           Capital: <span>{capital}</span>
         </p>
