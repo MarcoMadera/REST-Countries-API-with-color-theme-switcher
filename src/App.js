@@ -4,7 +4,7 @@ import Layout from "./components/Layout";
 import NotFound from "./components/NotFound";
 import "./App.css";
 import Home from "./pages/Home";
-import Country from "./pages/Country";
+import Details from "./pages/Details";
 
 const App = () => {
   const [data, setData] = useState([]);
@@ -12,7 +12,7 @@ const App = () => {
     window.matchMedia("(prefers-color-scheme: dark)").matches
   );
 
-  const switchDarkMode = useCallback(() => {
+  const toggleDarkMode = useCallback(() => {
     setDarkMode(!darkMode);
   }, [darkMode]);
 
@@ -34,13 +34,13 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <Layout darkMode={darkMode} switchDarkMode={switchDarkMode}>
+      <Layout darkMode={darkMode} toggleDarkMode={toggleDarkMode}>
         <Switch>
           <Route exact path="/" render={() => <Home data={data} />} />
           <Route
             exact
             path="/details/:alpha3Code"
-            render={(props) => <Country data={data} {...props} />}
+            render={(props) => <Details data={data} {...props} />}
           />
           <Route component={NotFound} />
         </Switch>

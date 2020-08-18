@@ -1,11 +1,11 @@
-import React,{Fragment} from "react";
+import React, { Fragment } from "react";
 import Header from "../components/Header";
 import PropTypes from "prop-types";
 
-const Layout = ({darkMode,switchDarkMode,children}) => {
-  return(
+const Layout = ({ darkMode, toggleDarkMode, children }) => {
+  return (
     <Fragment>
-      <Header darkMode={darkMode} switchDarkMode={switchDarkMode} />
+      <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       {children}
     </Fragment>
   );
@@ -13,7 +13,7 @@ const Layout = ({darkMode,switchDarkMode,children}) => {
 
 Layout.propTypes = {
   darkMode: PropTypes.bool,
-  switchDarkMode: PropTypes.func,
+  toggleDarkMode: PropTypes.func,
   children: PropTypes.node.isRequired,
 };
 export default Layout;

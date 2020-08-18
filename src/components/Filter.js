@@ -4,7 +4,7 @@ import Search from "./images/Search";
 import PropTypes from "prop-types";
 import Expand from "./images/Expand";
 
-const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
+const Filter = ({ newFilteredData, data, toggleIsSearching }) => {
   const [search, setSearch] = useState("");
   const [searchList, setListSearch] = useState();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
@@ -57,11 +57,11 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
         [...data].filter((result) => result.region.includes(searchList))
       );
       toggleIsSearching(true);
-      filterDataByName(results);
+      newFilteredData(results);
     } else {
       if (data.length > 0 && search) {
         toggleIsSearching(true);
-        filterDataByName(filterData([...data]));
+        newFilteredData(filterData([...data]));
       }
     }
     if (search === "" && !searchList) {
@@ -69,7 +69,7 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
     }
   }, [
     search,
-    filterDataByName,
+    newFilteredData,
     data,
     searchList,
     toggleIsSearching,
@@ -125,7 +125,7 @@ const Filter = ({ filterDataByName, data, toggleIsSearching }) => {
 };
 
 Filter.propTypes = {
-  filterDataByName: PropTypes.func,
+  newFilteredData: PropTypes.func,
   toggleIsSearching: PropTypes.func,
   data: PropTypes.array,
 };

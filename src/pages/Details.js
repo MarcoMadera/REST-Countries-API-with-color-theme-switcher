@@ -1,22 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
 import NotFound from "../components/NotFound";
-import "./css/Country.css";
+import "./css/Details.css";
 import BackArrow from "../components/images/BackArrow";
 import { Link } from "react-router-dom";
-const Country = ({ data, match, history }) => {
+const Details = ({ data, match, history }) => {
   const country = data.find(
     (country) => country.alpha3Code === match.params.alpha3Code
   );
   const countryBordersNames = (border) => {
-    const datas = [...data].filter(({ alpha3Code }) => alpha3Code === border);
+    const country = [...data].find(({ alpha3Code }) => alpha3Code === border);
     return (
       <Link
-        to={`/details/${datas[0].alpha3Code}`}
-        key={border}
+        to={`/details/${country.alpha3Code}`}
+        key={country.alpha3Code}
         className="Country__border"
       >
-        {datas[0].name}
+        {country.name}
       </Link>
     );
   };
@@ -99,9 +99,9 @@ const Country = ({ data, match, history }) => {
     </main>
   );
 };
-Country.propTypes = {
+Details.propTypes = {
   data: PropTypes.array,
   history: PropTypes.object,
   match: PropTypes.object,
 };
-export default Country;
+export default Details;

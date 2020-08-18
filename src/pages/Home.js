@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import Filter from "../components/Filter";
-import Countries from "../components/Countries";
+import Card from "../components/Card";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
 import "./css/Home.css";
@@ -13,28 +13,23 @@ const Home = ({ data }) => {
     setIsSearching(value);
   }, []);
 
-  const filterDataByName = useCallback((datos) => {
-    setFilteredData(datos);
+  const newFilteredData = useCallback((data) => {
+    setFilteredData(data);
   }, []);
 
   return (
     <>
       <Filter
-        filterDataByName={filterDataByName}
+        newFilteredData={newFilteredData}
         data={data}
         toggleIsSearching={toggleIsSearching}
       />
       {data.length > 0 ? (
-        <Countries
-          data={
-            filteredData.length > 0 && isSearching
-              ? filteredData
-              : isSearching === false
-                ? data
-                : []
-          }
-          filteredData={filteredData}
-        />
+        <main className="Countries">
+          {(isSearching === false ? data : filteredData).map((props) => (
+            <Card key={props.name} {...props} />
+          ))}
+        </main>
       ) : (
         <Spinner />
       )}
@@ -45,6 +40,7 @@ const Home = ({ data }) => {
 
 Home.propTypes = {
   data: PropTypes.array,
+  name: PropTypes.string,
 };
 
 export default Home;
