@@ -9,7 +9,7 @@ const Filter = ({ newFilteredData, data, changeIsFiltering }) => {
   const [regionFilter, setRegionFilter] = useState();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
 
-  const handleChange = useCallback((e) => {
+  const handleInputChange = useCallback((e) => {
     setInputFilter(e.target.value);
   }, []);
 
@@ -87,7 +87,7 @@ const Filter = ({ newFilteredData, data, changeIsFiltering }) => {
         <input
           id="SearchFilter__input"
           type="text"
-          onChange={handleChange}
+          onChange={handleInputChange}
           className="SearchFilter__input"
           placeholder="Search for a country..."
         />
