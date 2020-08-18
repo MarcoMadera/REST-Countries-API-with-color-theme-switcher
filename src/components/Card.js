@@ -1,7 +1,7 @@
 import React from "react";
-import "./css/Card.css";
-import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import "./css/Card.css";
 
 const Card = ({ flag, name, population, region, capital, alpha3Code }) => {
   const formatNumber = (number) => {

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import Header from "../components/Header";
 import PropTypes from "prop-types";
+import Header from "../components/Header";
 
 const Layout = ({ darkMode, toggleDarkMode, children }) => {
   return (

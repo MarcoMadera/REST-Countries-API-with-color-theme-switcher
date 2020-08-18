@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import "./css/Header.css";
 import Moon from "./images/Moon";
 import Sun from "./images/Sun";
-import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
 const Header = ({ darkMode, toggleDarkMode }) => {
   return (
     <header className="Header">

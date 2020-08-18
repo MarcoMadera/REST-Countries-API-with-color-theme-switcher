@@ -1,16 +1,16 @@
 import React, { useState, useCallback } from "react";
+import PropTypes from "prop-types";
+import "./css/Home.css";
 import Filter from "../components/Filter";
 import Card from "../components/Card";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
-import "./css/Home.css";
-import PropTypes from "prop-types";
 
 const Home = ({ data }) => {
   const [filteredData, setFilteredData] = useState([]);
-  const [isSearching, setIsSearching] = useState(false);
-  const toggleIsSearching = useCallback((value) => {
-    setIsSearching(value);
+  const [isFiltering, setIsFiltering] = useState(false);
+  const changeIsFiltering = useCallback((bool) => {
+    setIsFiltering(bool);
   }, []);
 
   const newFilteredData = useCallback((data) => {
@@ -22,18 +22,18 @@ const Home = ({ data }) => {
       <Filter
         newFilteredData={newFilteredData}
         data={data}
-        toggleIsSearching={toggleIsSearching}
+        changeIsFiltering={changeIsFiltering}
       />
       {data.length > 0 ? (
         <main className="Countries">
-          {(isSearching === false ? data : filteredData).map((props) => (
+          {(isFiltering === false ? data : filteredData).map((props) => (
             <Card key={props.name} {...props} />
           ))}
         </main>
       ) : (
         <Spinner />
       )}
-      {isSearching === true && filteredData.length === 0 && <NotFound />}
+      {isFiltering === true && filteredData.length === 0 && <NotFound />}
     </>
   );
 };

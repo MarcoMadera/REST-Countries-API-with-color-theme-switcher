@@ -1,13 +1,14 @@
 import React from "react";
-import PropTypes from "prop-types";
-import NotFound from "../components/NotFound";
-import "./css/Details.css";
-import BackArrow from "../components/images/BackArrow";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import "./css/Details.css";
+import NotFound from "../components/NotFound";
+import BackArrow from "../components/images/BackArrow";
 const Details = ({ data, match, history }) => {
   const country = data.find(
     (country) => country.alpha3Code === match.params.alpha3Code
   );
+
   const countryBordersNames = (border) => {
     const country = [...data].find(({ alpha3Code }) => alpha3Code === border);
     return (
@@ -20,9 +21,11 @@ const Details = ({ data, match, history }) => {
       </Link>
     );
   };
+
   const formatNumber = (number) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   };
+
   return (
     <main className="Country">
       {country ? (

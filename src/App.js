@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import NotFound from "./components/NotFound";
 import "./App.css";
+import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import Details from "./pages/Details";
+import NotFound from "./components/NotFound";
 
 const App = () => {
   const [data, setData] = useState([]);

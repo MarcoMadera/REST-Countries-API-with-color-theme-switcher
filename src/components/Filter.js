@@ -1,26 +1,26 @@
 import React, { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
 import "./css/Filter.css";
 import Search from "./images/Search";
-import PropTypes from "prop-types";
 import Expand from "./images/Expand";
 
-const Filter = ({ newFilteredData, data, toggleIsSearching }) => {
-  const [search, setSearch] = useState("");
-  const [searchList, setListSearch] = useState();
+const Filter = ({ newFilteredData, data, changeIsFiltering }) => {
+  const [inputFilter, setInputFilter] = useState("");
+  const [regionFilter, setRegionFilter] = useState();
   const [isDropDownOpen, setIsDropDownOpen] = useState(false);
   const handleChange = useCallback((e) => {
-    setSearch(e.target.value);
+    setInputFilter(e.target.value);
   }, []);
-  const handleListChange = useCallback(
-    (e) => {
+  const handleRegionChange = useCallback(
+    (region) => {
       setIsDropDownOpen(false);
-      if (e === searchList) {
-        setListSearch("");
+      if (region === regionFilter) {
+        setRegionFilter("");
       } else {
-        setListSearch(e);
+        setRegionFilter(region);
       }
     },
-    [searchList]
+    [regionFilter]
   );
 
   useEffect(() => {
@@ -45,34 +45,34 @@ const Filter = ({ newFilteredData, data, toggleIsSearching }) => {
           alpha3Code: data.alpha3Code,
         }))
         .filter((data) =>
-          data.name.toLowerCase().includes(search.toLowerCase())
+          data.name.toLowerCase().includes(inputFilter.toLowerCase())
         );
     },
-    [search]
+    [inputFilter]
   );
 
   useEffect(() => {
-    if (searchList && data.length > 0 && searchList) {
-      const results = filterData(
-        [...data].filter((result) => result.region.includes(searchList))
+    if (regionFilter && data.length > 0) {
+      const countries = filterData(
+        [...data].filter((country) => country.region.includes(regionFilter))
       );
-      toggleIsSearching(true);
-      newFilteredData(results);
+      changeIsFiltering(true);
+      newFilteredData(countries);
     } else {
-      if (data.length > 0 && search) {
-        toggleIsSearching(true);
+      if (data.length > 0 && inputFilter) {
+        changeIsFiltering(true);
         newFilteredData(filterData([...data]));
       }
     }
-    if (search === "" && !searchList) {
-      toggleIsSearching(false);
+    if (inputFilter === "" && !regionFilter) {
+      changeIsFiltering(false);
     }
   }, [
-    search,
+    inputFilter,
     newFilteredData,
     data,
-    searchList,
-    toggleIsSearching,
+    regionFilter,
+    changeIsFiltering,
     filterData,
   ]);
 
@@ -101,19 +101,19 @@ const Filter = ({ newFilteredData, data, toggleIsSearching }) => {
             e.stopPropagation();
           }}
         >
-          {searchList || "Filter by Region"}
+          {regionFilter || "Filter by Region"}
           <Expand width={12} height={12} />
         </button>
         <div
           className="CategoryFilter__dropDown"
           style={{ display: isDropDownOpen ? "block" : "none" }}
         >
-          <button onClick={() => handleListChange("Africa")}>Africa</button>
-          <button onClick={() => handleListChange("America")}>America</button>
-          <button onClick={() => handleListChange("Asia")}>Asia</button>
-          <button onClick={() => handleListChange("Europe")}>Europe</button>
+          <button onClick={() => handleRegionChange("Africa")}>Africa</button>
+          <button onClick={() => handleRegionChange("America")}>America</button>
+          <button onClick={() => handleRegionChange("Asia")}>Asia</button>
+          <button onClick={() => handleRegionChange("Europe")}>Europe</button>
           <button
-            onClick={() => handleListChange("Oceania")}
+            onClick={() => handleRegionChange("Oceania")}
             onKeyDown={(e) => e.keyCode === 9 && setIsDropDownOpen(false)}
           >
             Oceania
@@ -126,7 +126,7 @@ const Filter = ({ newFilteredData, data, toggleIsSearching }) => {
 
 Filter.propTypes = {
   newFilteredData: PropTypes.func,
-  toggleIsSearching: PropTypes.func,
+  changeIsFiltering: PropTypes.func,
   data: PropTypes.array,
 };
 
