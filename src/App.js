@@ -10,7 +10,7 @@ const App = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    fetch("https://restcountries.eu/rest/v2/all")
+    fetch("https://restcountries.com/v2/all")
       .then((res) => res.json())
       .then((res) => {
         setData(res);
