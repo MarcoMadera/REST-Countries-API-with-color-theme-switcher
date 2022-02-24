@@ -61,13 +61,13 @@ const Details = ({ data, match, history }) => {
                 </p>
                 <p>
                   Top Level Domain:{" "}
-                  {country.topLevelDomain.map((domain) => (
+                  {country.topLevelDomain?.map((domain) => (
                     <span key={domain}>{domain} </span>
                   ))}
                 </p>
                 <p>
                   Currencies:{" "}
-                  {country.currencies.map(({ name }, i) =>
+                  {country.currencies?.map(({ name }, i) =>
                     country.currencies.length === i + 1 ? (
                       <span key={name}>{name}</span>
                     ) : (
@@ -77,7 +77,7 @@ const Details = ({ data, match, history }) => {
                 </p>
                 <p>
                   Languages:{" "}
-                  {country.languages.map(({ name }, i) =>
+                  {country.languages?.map(({ name }, i) =>
                     country.languages.length === i + 1 ? (
                       <span key={name}>{name}</span>
                     ) : (
