@@ -88,7 +88,7 @@ const Details = ({ data, match, history }) => {
               </div>
               <div className="Country__borders">
                 <p>Border Countries: </p>
-                {country.borders.length ? (
+                {country.borders?.length ? (
                   country.borders.map((border) => countryBordersNames(border))
                 ) : (
                   <span>None</span>
