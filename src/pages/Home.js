@@ -5,6 +5,7 @@ import Filter from "../components/Filter";
 import Card from "../components/Card";
 import Spinner from "../components/Spinner";
 import NotFound from "../components/NotFound";
+import WorldMap from "../components/WorldMap";
 
 const Home = ({ data }) => {
   const [filteredData, setFilteredData] = useState([]);
@@ -16,19 +17,34 @@ const Home = ({ data }) => {
   const newFilteredData = useCallback((data) => {
     setFilteredData(data);
   }, []);
+  function generateRandomNumber(min, max){
+    const number= Math.floor(Math.random() * (max - min + 1)) + min;
+    return number.toString();
+  }
 
+  const countriesdata = data?.reduce((result, countryData) => {
+    if (!result[countryData.alpha3Code]) {
+      result[countryData.alpha3Code] = {...countryData, fillKey: generateRandomNumber(1,25)};
+    }
+    return result;
+  }, {});
+
+  
   return (
     <>
+      <WorldMap onClick={(e)=>{console.log("hey",e);}} data={countriesdata}/>
       <Filter
         newFilteredData={newFilteredData}
         data={data}
         changeIsFiltering={changeIsFiltering}
       />
       {data.length > 0 ? (
-        <main className="Countries">
-          {(isFiltering === false ? data : filteredData).map((props) => (
-            <Card key={props.name} {...props} />
-          ))}
+        <main>
+          <section className="Countries">
+            {(isFiltering === false ? data : filteredData).map((props) => (
+              <Card key={props.name} {...props} />
+            ))}
+          </section>
         </main>
       ) : (
         <Spinner />
